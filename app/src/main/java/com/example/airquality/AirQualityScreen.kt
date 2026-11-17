@@ -32,7 +32,7 @@ data class AirQualityReading(
 val dummyReadings = listOf(
     AirQualityReading(42, "Good", Color(0xFF2E7D32)),
     AirQualityReading(87, "Moderate", Color(0xFFF9A825)),
-    AirQualityReading(156, "Unhealthy", Color(0xFFC62828))
+    AirQualityReading(156, "Poor", Color(0xFFC62828))
 )
 
 @Composable
