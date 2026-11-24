@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,8 +29,8 @@ import com.example.airquality.statusForAqi
 import com.example.airquality.ui.theme.AirQualityTheme
 import kotlinx.coroutines.launch
 
-private const val LATITUDE = 51.5072
-private const val LONGITUDE = -0.1276
+private const val LATITUDE = 57.149651
+private const val LONGITUDE = -2.099075
 
 @Composable
 fun AirQualityScreen(modifier: Modifier = Modifier) {
@@ -45,6 +46,7 @@ fun AirQualityScreen(modifier: Modifier = Modifier) {
             try {
                 aqi = AirQualityApi.fetchUsAqi(LATITUDE, LONGITUDE)
             } catch (e: Exception) {
+                Log.e("AirQuality", "Fetch failed", e)
                 error = "Couldn't load air quality. Check your connection and try again."
             } finally {
                 loading = false
