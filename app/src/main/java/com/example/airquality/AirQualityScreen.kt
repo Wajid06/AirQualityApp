@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,7 +34,10 @@ private const val LATITUDE = 57.149651
 private const val LONGITUDE = -2.099075
 
 @Composable
-fun AirQualityScreen(modifier: Modifier = Modifier) {
+fun AirQualityScreen(
+    modifier: Modifier = Modifier,
+    onViewCities: () -> Unit = {}
+) {
     var aqi by rememberSaveable { mutableStateOf<Int?>(null) }
     var loading by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
@@ -102,6 +106,11 @@ fun AirQualityScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(32.dp))
         Button(onClick = { refresh() }, enabled = !loading) {
             Text(if (loading) "Loading..." else "Refresh")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedButton(onClick = onViewCities) {
+            Text("Compare cities")
         }
 
         Spacer(modifier = Modifier.height(24.dp))
