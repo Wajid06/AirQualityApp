@@ -1,5 +1,6 @@
 package com.example.airquality
 
+import AirQualityScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AirQualityTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AirQualityScreen(modifier = Modifier.padding(innerPadding))
+                    AppNavigation(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
